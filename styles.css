@@ -78,8 +78,9 @@ h1 {
 }
 
 .dialog-text {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     line-height: 1.5;
+    text-align: justify;
 }
 
 .bunny-name {
@@ -93,6 +94,10 @@ h1 {
     display: flex;
     justify-content: space-between;
     margin-top: 15px;
+}
+
+.hidden {
+    display: none;
 }
 
 .nav-button {
@@ -176,4 +181,73 @@ h1 {
     .bunny-name {
         font-size: 1.1rem;
     }
+}
+
+.ancient-header {
+    text-align: center;
+    margin: 15px 0;
+    padding: 10px;
+    background-color: #f3e8c4;
+    border-radius: 10px;
+    border: 2px solid #e5d7a8;
+}
+
+.ancient-title {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #8b6d2b;
+    text-shadow: 1px 1px 0 #fff7e0;
+    font-family: 'Papyrus', fantasy;
+    letter-spacing: 2px;
+}
+
+.letter-puzzle {
+    display: flex;
+    justify-content: center;
+    gap: 2px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.letter-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 1px;
+}
+
+.letter {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #8b6d2b;
+    background-color: #fdf6e3;
+    width: 30px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px 5px 0 0;
+    border: 1px solid #e5d7a8;
+    border-bottom: none;
+}
+
+.letter-input {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #e5d7a8;
+    border-radius: 0 0 5px 5px;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #2b5a3d;
+    background-color: #fff;
+}
+
+.letter-input:focus {
+    outline: none;
+    border-color: #8cd99c;
+    box-shadow: 0 0 3px #8cd99c;
+}
+
+.solved {
+    background-color: #8cd99c;
 }

@@ -1,81 +1,263 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Egipski Królik</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
+  </head>
+  <body>
     <div class="game-container">
-        <div class="header">
-            <h1>Hoppankhamun</h1>
-            <div>Strażnik Starożytnych Marchewek</div>
+      <div class="header">
+        <h1 id="pharaoh-name">Hoppankhamun</h1>
+        <div>Strażnik Starożytnych Marchewek</div>
+      </div>
+
+      <div class="bunny-container">
+        <img src="assets/egypt.jpg" alt="Historical Bunny" class="bunny-image" id="bunnyImage" />
+      </div>
+      <div class="ancient-header">
+        <div style="font-size: 1.2rem">Deszyfrator</div>
+        <div class="letter-puzzle">
+          <div class="letter-group">
+            <div class="letter">𓉐</div>
+            <input type="text" class="letter-input" maxlength="1" />
+          </div>
+          <div class="letter-group">
+            <div class="letter">𓍯</div>
+            <input type="text" class="letter-input" maxlength="1" />
+          </div>
+          <div class="letter-group">
+            <div class="letter">𓊪</div>
+            <input type="text" class="letter-input" maxlength="1" />
+          </div>
+          <div class="letter-group">
+            <div class="letter">𓊪</div>
+            <input type="text" class="letter-input" maxlength="1" />
+          </div>
+          <div class="letter-group">
+            <div class="letter">𓀀</div>
+            <input type="text" class="letter-input" maxlength="1" />
+          </div>
+          <div class="letter-group">
+            <div class="letter">𓈖</div>
+            <input type="text" class="letter-input" maxlength="1" />
+          </div>
+          <div class="letter-group">
+            <div class="letter">𓎡</div>
+            <input type="text" class="letter-input" maxlength="1" />
+          </div>
+          <div class="letter-group">
+            <div class="letter">𓄤</div>
+            <input type="text" class="letter-input" maxlength="1" />
+          </div>
+          <div class="letter-group">
+            <div class="letter">𓀀</div>
+            <input type="text" class="letter-input" maxlength="1" />
+          </div>
+          <div class="letter-group">
+            <div class="letter">𓅓</div>
+            <input type="text" class="letter-input" maxlength="1" />
+          </div>
+          <div class="letter-group">
+            <div class="letter">𓇋</div>
+            <input type="text" class="letter-input" maxlength="1" />
+          </div>
+          <div class="letter-group">
+            <div class="letter">𓈖</div>
+            <input type="text" class="letter-input" maxlength="1" />
+          </div>
         </div>
-        
-        <div class="bunny-container">
-            <img src="assets/egypt.jpg" alt="Historical Bunny" class="bunny-image" id="bunnyImage">
-        </div>
-        
-        <div class="dialog-box">
-            <div class="dialog-text" id="dialogText">
-                Witajcie, podróżnicy w czasie! 
-                <p>Jam jest Hoppankhamun, faraon egipski zwany Strażnikiem Starożytnych Marchewek. Wiem, że szukacie darowanego Wam Złotego Jaja. Musicie wiedzieć, że zostało ono stworzone przed wiekami własnie tutaj - w Egipcie! Wykluł je mój serdeczny przyjaciel Skarabejaj... ale nie czas to i nie miejsce na stare historie. Jeśli chcecie odnaleźć Złote Jajo, rozejrzyjcie się za wskazówkami na przedmiotach, które pochodzą z moich rodzinnych stron.
-                </p>
-            </div>
-        </div>
-        
-        <!-- <div class="navigation">
+      </div>
+
+      <div class="dialog-box">
+        <div class="dialog-text" id="dialogText"></div>
+      </div>
+
+      <!-- <div class="navigation">
             <button class="nav-button" id="prevButton">← Previous</button>
             <button class="nav-button" id="clueButton">Find Clue</button>
             <button class="nav-button" id="nextButton">Next →</button>
         </div> -->
-        
     </div>
 
     <script>
-        $(document).ready(function() {
-            // Sample data for different historical bunnies
-            const bunnies = [
-                {
-                    name: "Ancient Egyptian Bunny",
-                    dialog: "Greetings, time traveler! I am Hoppankhamun, guardian of the sacred carrot scrolls. Legend says the Golden Egg was hidden during the building of the Great Pyramid. Look for the symbol of the rising sun to find your first clue!",
-                    image: "/api/placeholder/400/320",
-                    hasClue: true,
-                    clueNumber: 1
-                },
-                {
-                    name: "Medieval Knight Bunny",
-                    dialog: "Hail, seeker of the Golden Egg! Sir Hopsalot at thy service. The royal court whispers of a treasure map hidden in the castle garden. Seek the emblem of the rose and thou shall find wisdom!",
-                    image: "/api/placeholder/400/320",
-                    hasClue: true,
-                    clueNumber: 2
-                },
-                {
-                    name: "Renaissance Bunny",
-                    dialog: "Buongiorno! I am Cottontail da Vinci, master of arts and carrots! The Golden Egg's location was encoded in my famous painting. Can you spot the hidden pattern in the stars?",
-                    image: "/api/placeholder/400/320",
-                    hasClue: true,
-                    clueNumber: 3
-                },
-                {
-                    name: "Victorian Era Bunny",
-                    dialog: "Good day to you! Professor Whiskers at your service. During my expeditions to the colonies, I uncovered ancient writings about the Golden Egg. The secret lies in the grandfather clock!",
-                    image: "/api/placeholder/400/320",
-                    hasClue: true,
-                    clueNumber: 4
-                },
-                {
-                    name: "Space Age Bunny",
-                    dialog: "Greetings, Earth friend! Commander Fluffy reporting from Bunny Base Alpha. Our telescopes have detected the final clue's location. The Golden Egg's hiding place aligns with the stars of the Big Dipper!",
-                    image: "/api/placeholder/400/320",
-                    hasClue: true,
-                    clueNumber: 5
-                }
-            ];
-            
+      $(document).ready(function () {
+        const latinToHieroglyphMap = {
+          // English lowercase letters - using more visually distinct hieroglyphs
+          a: '𓀀', // EGYPTIAN HIEROGLYPH A001 (seated man)
+          b: '𓃒', // EGYPTIAN HIEROGLYPH E001 (bull)
+          c: '𓆓', // EGYPTIAN HIEROGLYPH H006 (crocodile)
+          d: '𓇯', // EGYPTIAN HIEROGLYPH I010 (sun)
+          e: '𓅨', // EGYPTIAN HIEROGLYPH G026 (falcon)
+          f: '𓆣', // EGYPTIAN HIEROGLYPH I001 (cobra)
+          g: '𓉕', // EGYPTIAN HIEROGLYPH O002 (courtyard)
+          h: '𓄤', // EGYPTIAN HIEROGLYPH F004 (ear)
+          i: '𓂧', // EGYPTIAN HIEROGLYPH D046 (hand)
+          j: '𓆼', // EGYPTIAN HIEROGLYPH I011 (reed leaf)
+          k: '𓎡', // EGYPTIAN HIEROGLYPH V012 (basket)
+          l: '𓋴', // EGYPTIAN HIEROGLYPH S029 (folded cloth)
+          m: '𓅓', // EGYPTIAN HIEROGLYPH G001 (vulture)
+          n: '𓈖', // EGYPTIAN HIEROGLYPH N035 (water ripple)
+          o: '𓍯', // EGYPTIAN HIEROGLYPH T023 (loaf)
+          p: '𓊪', // EGYPTIAN HIEROGLYPH Q003 (stool)
+          q: '𓃻', // EGYPTIAN HIEROGLYPH F001 (heart)
+          r: '𓂋', // EGYPTIAN HIEROGLYPH D021 (mouth)
+          s: '𓊃', // EGYPTIAN HIEROGLYPH O034 (door bolt)
+          t: '𓏏', // EGYPTIAN HIEROGLYPH X001 (loaf)
+          u: '𓇋', // EGYPTIAN HIEROGLYPH M017 (reed)
+          v: '𓆱', // EGYPTIAN HIEROGLYPH M001 (tree)
+          w: '𓌅', // EGYPTIAN HIEROGLYPH T003 (mace)
+          x: '𓐍', // EGYPTIAN HIEROGLYPH Z015 (crossed sticks)
+          y: '𓇌', // EGYPTIAN HIEROGLYPH M017A (two reeds)
+          z: '𓏴', // EGYPTIAN HIEROGLYPH Z009 (dual strokes)
+
+          // English uppercase letters - using larger, more prominent hieroglyphs
+          A: '𓁶', // EGYPTIAN HIEROGLYPH A021 (man with arms raised)
+          B: '𓉗', // EGYPTIAN HIEROGLYPH O004 (palace facade)
+          C: '𓊖', // EGYPTIAN HIEROGLYPH O010 (shrine)
+          D: '𓀯', // EGYPTIAN HIEROGLYPH A045 (seated nobleman)
+          E: '𓃀', // EGYPTIAN HIEROGLYPH E012 (hippopotamus)
+          F: '𓅱', // EGYPTIAN HIEROGLYPH G043 (quail chick)
+          G: '𓊅', // EGYPTIAN HIEROGLYPH O036 (shrine)
+          H: '𓉐', // EGYPTIAN HIEROGLYPH N018 (house)
+          I: '𓄿', // EGYPTIAN HIEROGLYPH D036 (forearm)
+          J: '𓆭', // EGYPTIAN HIEROGLYPH H008 (frog)
+          K: '𓃠', // EGYPTIAN HIEROGLYPH E023 (lion)
+          L: '𓂝', // EGYPTIAN HIEROGLYPH D037 (arm)
+          M: '𓄋', // EGYPTIAN HIEROGLYPH F013 (cow's horn)
+          N: '𓅯', // EGYPTIAN HIEROGLYPH G041 (pintail)
+          O: '𓇳', // EGYPTIAN HIEROGLYPH N005 (sun with rays)
+          P: '𓊤', // EGYPTIAN HIEROGLYPH P001 (sail)
+          Q: '𓋇', // EGYPTIAN HIEROGLYPH R004 (eye of Horus)
+          R: '𓁨', // EGYPTIAN HIEROGLYPH A015 (standing person)
+          S: '𓆼', // EGYPTIAN HIEROGLYPH M008 (pool)
+          T: '𓌔', // EGYPTIAN HIEROGLYPH T011 (bread)
+          U: '𓃟', // EGYPTIAN HIEROGLYPH E022 (ram)
+          V: '𓏜', // EGYPTIAN HIEROGLYPH V007A (knife)
+          W: '𓎛', // EGYPTIAN HIEROGLYPH V001 (coil of rope)
+          X: '𓍿', // EGYPTIAN HIEROGLYPH U001 (sickle)
+          Y: '𓇋', // EGYPTIAN HIEROGLYPH M017 (reed)
+          Z: '𓏭', // EGYPTIAN HIEROGLYPH W024 (union symbol)
+
+          // Polish lowercase special characters - using distinctive hieroglyphs
+          ą: '𓀭', // EGYPTIAN HIEROGLYPH A043A (man carrying)
+          ć: '𓉡', // EGYPTIAN HIEROGLYPH O022 (shrine)
+          ę: '𓁼', // EGYPTIAN HIEROGLYPH A026 (seated person)
+          ł: '𓃾', // EGYPTIAN HIEROGLYPH F042 (intestine)
+          ń: '𓐭', // EGYPTIAN HIEROGLYPH AA027 (phonetic sign)
+          ó: '𓅿', // EGYPTIAN HIEROGLYPH G054 (pintail)
+          ś: '𓇑', // EGYPTIAN HIEROGLYPH M026 (plant)
+          ź: '𓈇', // EGYPTIAN HIEROGLYPH N017 (pool)
+          ż: '𓎗', // EGYPTIAN HIEROGLYPH V007 (mace)
+
+          // Polish uppercase special characters - using large, complex hieroglyphs
+          Ą: '𓃥', // EGYPTIAN HIEROGLYPH E031 (composite animal)
+          Ć: '𓂀', // EGYPTIAN HIEROGLYPH D013 (eye)
+          Ę: '𓊨', // EGYPTIAN HIEROGLYPH P005 (boat)
+          Ł: '𓅂', // EGYPTIAN HIEROGLYPH G005 (falcon)
+          Ń: '𓁹', // EGYPTIAN HIEROGLYPH A024 (man with stick)
+          Ó: '𓈎', // EGYPTIAN HIEROGLYPH N029 (canal)
+          Ś: '𓏛', // EGYPTIAN HIEROGLYPH Y001 (scroll)
+          Ź: '𓍢', // EGYPTIAN HIEROGLYPH T018 (bread)
+          Ż: '𓎼', // EGYPTIAN HIEROGLYPH W003 (oil jar)
+        };
+
+        function polishToHieroglyphs(text) {
+          return text.replace(/[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]/g, (char) => {
+            return latinToHieroglyphMap[char] || char;
+          });
+        }
+
+        function decipher(text, map) {
+          let out = '';
+          for (const symbol of text) {
+            if (map[symbol]) {
+              out += map[symbol];
+            } else {
+              out += symbol;
+            }
+          }
+          return out;
+        }
+
+        function getKeycode() {
+          let concatenatedText = '';
+
+          $('.letter-input').each(function () {
+            concatenatedText += $(this).val();
+          });
+
+          return concatenatedText;
+        }
+
+        function getCipher() {
+          let cipher = {};
+          $('.letter-input').each(function () {
+            if ($(this).val()) {
+              let hieroglyph = $(this).siblings('div.letter').text();
+              cipher[hieroglyph] = $(this).val();
+            }
+          });
+          return cipher;
+        }
+
+        const NAME = 'Hoppankhamun';
+        const TEXT =
+          'Witajcie, podróżnicy w czasie! Jam jest Hoppankhamun, faraon egipski zwany Strażnikiem Starożytnych Marchewek. Wiem, że szukacie darowanego Wam Złotego Jaja. Musicie wiedzieć, że zostało ono stworzone przed wiekami własnie tutaj - w Egipcie! Wykluł je mój serdeczny przyjaciel Skarabejaj... ale nie czas to i nie miejsce na stare historie. Jeśli chcecie odnaleźć Złote Jajo, rozejrzyjcie się za wskazówkami na przedmiotach, które pochodzą z moich rodzinnych stron.';
+
+        $('#pharaoh-name').text(polishToHieroglyphs(NAME));
+        $('.dialog-text').text(polishToHieroglyphs(TEXT));
+
+        $('.letter-input').on('input', () => {
+          if (getKeycode().toLowerCase() == NAME.toLowerCase()) {
+            $('.letter-input').addClass('solved');
+            $('#pharaoh-name').text(NAME);
+            $('.dialog-text').text(TEXT);
+            return;
+          }
+          $('.letter-input').removeClass('solved');
+          let cipher = getCipher();
+          $('#pharaoh-name').text(decipher(polishToHieroglyphs(NAME), cipher));
+          $('.dialog-text').text(decipher(polishToHieroglyphs(TEXT), cipher));
         });
+
+        const bunnies = [
+          {
+            name: 'Medieval Knight Bunny',
+            dialog:
+              'Hail, seeker of the Golden Egg! Sir Hopsalot at thy service. The royal court whispers of a treasure map hidden in the castle garden. Seek the emblem of the rose and thou shall find wisdom!',
+            image: '/api/placeholder/400/320',
+            hasClue: true,
+            clueNumber: 2,
+          },
+          {
+            name: 'Renaissance Bunny',
+            dialog:
+              "Buongiorno! I am Cottontail da Vinci, master of arts and carrots! The Golden Egg's location was encoded in my famous painting. Can you spot the hidden pattern in the stars?",
+            image: '/api/placeholder/400/320',
+            hasClue: true,
+            clueNumber: 3,
+          },
+          {
+            name: 'Victorian Era Bunny',
+            dialog:
+              'Good day to you! Professor Whiskers at your service. During my expeditions to the colonies, I uncovered ancient writings about the Golden Egg. The secret lies in the grandfather clock!',
+            image: '/api/placeholder/400/320',
+            hasClue: true,
+            clueNumber: 4,
+          },
+          {
+            name: 'Space Age Bunny',
+            dialog:
+              "Greetings, Earth friend! Commander Fluffy reporting from Bunny Base Alpha. Our telescopes have detected the final clue's location. The Golden Egg's hiding place aligns with the stars of the Big Dipper!",
+            image: '/api/placeholder/400/320',
+            hasClue: true,
+            clueNumber: 5,
+          },
+        ];
+      });
     </script>
-</body>
+  </body>
 </html>
