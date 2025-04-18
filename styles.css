@@ -1,0 +1,179 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background-color: #eaffef;
+    color: #2b5a3d;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c4ebd0' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.game-container {
+    background-color: white;
+    border-radius: 20px;
+    padding: 20px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border: 3px solid #a8e6b5;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+h1 {
+    color: #3c9d50;
+    font-size: 1.8rem;
+    text-shadow: 2px 2px 0 #d9ffd9;
+    margin-bottom: 5px;
+}
+
+.bunny-container {
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+    border: 2px dashed #a8e6b5;
+}
+
+.bunny-image {
+    max-width: 100%;
+    max-height: 270px;
+    border-radius: 10px;
+}
+
+.dialog-box {
+    background-color: #f0fff5;
+    border-radius: 15px;
+    padding: 15px;
+    margin-top: 10px;
+    border: 2px solid #c9ffdb;
+    position: relative;
+}
+
+.dialog-box:before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #c9ffdb;
+}
+
+.dialog-text {
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+.bunny-name {
+    font-weight: bold;
+    color: #3c9d50;
+    margin-bottom: 5px;
+    font-size: 1.3rem;
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.nav-button {
+    background-color: #b0e8bc;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    color: #2b5a3d;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-button:hover {
+    background-color: #8cd99c;
+    transform: translateY(-2px);
+}
+
+.nav-button:active {
+    transform: translateY(0);
+}
+
+.inventory {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #f3f8e6;
+    border-radius: 10px;
+    border: 2px solid #d1e5b4;
+}
+
+.inventory-title {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #53733b;
+}
+
+.clues {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.clue-item {
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    opacity: 0.5;
+}
+
+.clue-item.found {
+    opacity: 1;
+}
+
+@media (max-width: 480px) {
+    .game-container {
+        padding: 15px;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    .bunny-container {
+        min-height: 220px;
+    }
+    
+    .dialog-text {
+        font-size: 1rem;
+    }
+    
+    .bunny-name {
+        font-size: 1.1rem;
+    }
+}
