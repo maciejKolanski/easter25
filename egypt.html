@@ -76,7 +76,7 @@
       </div>
 
       <div class="navigation">
-        <button class="nav-button hidden" id="nextButton">Idź do Jajoletesa!</button>
+        <button class="nav-button hidden" id="greekButton">Idź do Jajoletesa!</button>
       </div>
     </div>
 
@@ -207,6 +207,24 @@
 
         $('#pharaoh-name').text(polishToHieroglyphs(NAME));
         $('.dialog-text').text(polishToHieroglyphs(TEXT));
+        $('#greekButton').on('click', () => {
+          // Get the current URL
+          let currentUrl = window.location.href;
+
+          // Remove trailing slash if it exists
+          if (currentUrl.endsWith('/')) {
+            currentUrl = currentUrl.slice(0, -1);
+          }
+
+          // Find the last slash
+          const lastSlashIndex = currentUrl.lastIndexOf('/');
+
+          if (lastSlashIndex !== -1) {
+            window.location = currentUrl.substring(0, lastSlashIndex) + '/greek.html';
+          } else {
+            window.location = currentUrl + '/greek.html';
+          }
+        });
 
         $('.letter-input').on('input', function () {
           let hieroglyph = $(this).siblings('div.letter').text();
