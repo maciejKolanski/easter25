@@ -21,7 +21,7 @@
         <div style="font-size: 1.2rem">Deszyfrator</div>
         <div class="letter-puzzle">
           <div class="letter-group">
-            <div class="letter">𓉐</div>
+            <div class="letter">𓄤</div>
             <input type="text" class="letter-input" maxlength="1" />
           </div>
           <div class="letter-group">
@@ -75,11 +75,9 @@
         <div class="dialog-text" id="dialogText"></div>
       </div>
 
-      <!-- <div class="navigation">
-            <button class="nav-button" id="prevButton">← Previous</button>
-            <button class="nav-button" id="clueButton">Find Clue</button>
-            <button class="nav-button" id="nextButton">Next →</button>
-        </div> -->
+      <div class="navigation">
+        <button class="nav-button hidden" id="nextButton">Idź do Jajoletesa!</button>
+      </div>
     </div>
 
     <script>
@@ -205,22 +203,27 @@
 
         const NAME = 'Hoppankhamun';
         const TEXT =
-          'Witajcie, podróżnicy w czasie! Jam jest Hoppankhamun, faraon egipski zwany Strażnikiem Starożytnych Marchewek. Wiem, że szukacie darowanego Wam Złotego Jaja. Musicie wiedzieć, że zostało ono stworzone przed wiekami własnie tutaj - w Egipcie! Wykluł je mój serdeczny przyjaciel Skarabejaj... ale nie czas to i nie miejsce na stare historie. Jeśli chcecie odnaleźć Złote Jajo, rozejrzyjcie się za wskazówkami na przedmiotach, które pochodzą z moich rodzinnych stron.';
+          'Witajcie, podróżnicy w czasie! Jam jest Hoppankhamun, faraon egipski zwany Strażnikiem Starożytnych Marchewek. Wiem, że szukacie darowanego Wam Złotego Jaja. Musicie wiedzieć, że zostało ono stworzone przed wiekami własnie tutaj - w Egipcie! Wykluł je mój serdeczny przyjaciel Skarabejaj... ale nie czas to i nie miejsce na stare historie. Złotego Jaja nie ma tu od lat. Wiem tylko, że dawno temu trafiło na Kretę. Spróbujcie zapytać mojego przyjaciela Jajoletesa';
 
         $('#pharaoh-name').text(polishToHieroglyphs(NAME));
         $('.dialog-text').text(polishToHieroglyphs(TEXT));
 
-        $('.letter-input').on('input', () => {
+        $('.letter-input').on('input', function () {
+          let hieroglyph = $(this).siblings('div.letter').text();
+          if (hieroglyph == latinToHieroglyphMap[$(this).val().toLowerCase()]) {
+            $(this).addClass('solved');
+          } else {
+            $(this).removeClass('solved');
+          }
           if (getKeycode().toLowerCase() == NAME.toLowerCase()) {
-            $('.letter-input').addClass('solved');
             $('#pharaoh-name').text(NAME);
             $('.dialog-text').text(TEXT);
-            return;
+            $('.nav-button').show();
+          } else {
+            $('#pharaoh-name').text(polishToHieroglyphs(NAME));
+            $('.dialog-text').text(polishToHieroglyphs(TEXT));
+            $('.nav-button').hide();
           }
-          $('.letter-input').removeClass('solved');
-          let cipher = getCipher();
-          $('#pharaoh-name').text(decipher(polishToHieroglyphs(NAME), cipher));
-          $('.dialog-text').text(decipher(polishToHieroglyphs(TEXT), cipher));
         });
 
         const bunnies = [
