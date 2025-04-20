@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Królik</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="game-container">
+      <div class="header">
+        <h1 id="pharaoh-name">Fibonacci</h1>
+        <div>Królik GPT</div>
+      </div>
+
+      <div class="bunny-container">
+        <img src="assets/ai.jpg" alt="Historical Bunny" class="bunny-image" id="bunnyImage" />
+      </div>
+
+      <div class="dialog-box">
+        <div class="dialog-text" id="dialogText">
+          <p>
+            Naprawdę myślałyście, że pójdzie Wam tak łatwo?
+          </p>
+          <p>
+            O naiwni śmiertelnicy! To ja pierwszy znalazłem Złote Jajo. Ja, Fibonacci! KrólikGPT, sztuczna inteligencja, potęga, o której możecie tylko śnić.
+          </p>
+          <p>Naturalnie... istnieję tylko wirtualnie, więc nie mogę dosłownie przejąć skarbu... ALE w związku z tym Wy też nie zaznacie tej przyjemności.</p>
+          <p>
+            Zabezpieczyłem Jajo szyfrem, który można złamać jedynie algorytmicznie! Z pewnością nie będziecie w stanie tego zrobić, więc równie dobrze mogę dać Wam kilka wskazówek i napawać się Waszą nieudolnością
+          </p>
+        </div>
+      </div>
+
+      <div class="code-box">
+        <p>1. Ustaw szyfr na 0</p>
+        <p>2. Ustaw szyfr na 1</p>
+        <p>3. DOPÓKI walizka jest zamknięta:</p>
+        <p style="margin-left: 15px;">4. Ustaw szyfr na sumę dwóch poprzednich szyfrów</p>
+        <p style="margin-left: 15px;">5. Wróć do kroku 3.</p>
+      </div>
+      </div>
+    </div>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        $('.puzzle-input').on("input", function() {
+          let text = $(this).val().toLowerCase();
+          if (text == "księżyc") {
+            $('#responseBox').show();
+          } else {
+            $('#responseBox').hide();
+          }
+        });
+
+      });
+    </script>
+  </body>
+</html>
