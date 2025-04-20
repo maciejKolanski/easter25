@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Średniowieczny Królik</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="game-container">
+      <div class="header">
+        <h1 id="pharaoh-name">Seraphina</h1>
+        <div>Obrońca Świętego Koszyka</div>
+      </div>
+
+      <div class="bunny-container">
+        <img src="assets/medieval.jpg" alt="Historical Bunny" class="bunny-image" id="bunnyImage" />
+      </div>
+
+      <div class="dialog-box">
+        <div class="dialog-text" id="dialogText">
+          <p>
+            Witajcie, śmiałkowie! Ja, Seraphina, Obrońca Świętego Koszyka, mam zaszczyt przyjąć Was w tych nieziemskich,
+            choć pełnych niebezpieczeństw okolicach.
+          </p>
+          <p>
+            Oczywiście, że słyszałem o Złotym Jaju, ale skąd mam wiedzieć, że jesteście godni tej wiedzy? Jeżeli
+            udowodnicie swoją mądrość rozwiuzując moją zagadkę, powiem Wam wszystko, co sam wiem:
+          </p>
+        </div>
+      </div>
+
+      <div class="puzzle-box">
+        <p>Złoty nie jestem, choć czasem świecę,</p>
+        <p>W dzień mnie nie znajdziesz, nocą – na świecie.</p>
+        <p>Wilki mnie lubią, kochają pieśniarze,</p>
+        <p>Lecz gdy mnie nie ma, ciemność przeważa.</p>
+        <input type="text" class="puzzle-input" maxlength="15" />
+      </div>
+      <div class="dialog-box hidden" id="responseBox">
+        <div class="dialog-text" >
+        <div>
+          <p>
+          Tak, to księżyc! Wasza mądrość jest do prawdy imponująca!</p>
+          <p>Niestety w kwestii Złotego Jaja nie mam dobrych wieści. Wiem, że ostatnio widziano je we Florencji, mieście artystów i rzemieślników.
+          </p>
+          <p>Mam tam dobrego znajomego, malarza: Coniglio de Medici. Jeżeli zaimponujecie mu swoimi umiejętnościami malarskimi, z pewnością podzieli się z Wami wiedzą o losach Złotego Jaja. 
+          </p>
+          <p>W pokoju na dole znajdziecie przybory malarskie. Przygotujcie rysunki dla Mamy i Babci. Jeżeli będą dostatecznie piękne, będziecie mogły porozmawiać z Coniglio </p>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        $('.puzzle-input').on("input", function() {
+          let text = $(this).val().toLowerCase();
+          if (text == "księżyc") {
+            $('#responseBox').show();
+          } else {
+            $('#responseBox').hide();
+          }
+        });
+
+      });
+    </script>
+  </body>
+</html>
